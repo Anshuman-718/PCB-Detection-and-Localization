@@ -94,52 +94,50 @@ The `models` directory contains the trained model files, while `integration` con
 
 ## Installation and Setup
 
-### Prerequisites
-
-- Python 3.10 or a compatible version
-- Git
-- Required Python libraries
-- Trained YOLOv8 model weights
-
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Anshuman-718/PCB-Detection-and-Localization.git
-```
-
-### 2. Navigate to the project directory
-
-```bash
 cd PCB-Detection-and-Localization
 ```
 
-### 3. Create a virtual environment
+### 2. Create a Virtual Environment
 
 ```bash
-python -m venv .venv
+python -m venv venv
 ```
 
-Activate it on Windows:
+Activate it:
 
+**Windows**
 ```bash
-.venv\Scripts\activate
+venv\Scripts\activate
 ```
 
-### 4. Install dependencies
+**Linux / Raspberry Pi**
+```bash
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Run the application
+### 4. Prepare the Model Files
 
-After placing the trained model weights in their configured locations, execute the main application:
+Place the required trained model files in the appropriate model directory. Check the model paths specified in the Python scripts before running the application.
+
+### 5. Run the Application
+
+For the integrated application:
 
 ```bash
 python integration/main.py
 ```
 
-*The execution command and model paths should be adjusted according to the final repository structure.*
+**Note:** Model files and input images must be available at the paths configured in the scripts. Raspberry Pi deployment may require separate dependency installation and model-path configuration.
 
 ## Sample Results
 
