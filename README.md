@@ -173,4 +173,14 @@ The detailed project report covers the system architecture, dataset preparation,
 
 [📄 View or Download Project Report (PDF)](./results/L298N_PCB_Detection_and_Localization_Report.pdf)
 
+## Acknowledgements and Dataset Credits
+
+- **Roboflow:** Used for dataset preparation, image annotation, and model training workflows.
+- **L298N Board Detection Dataset:** `visiontest-ryq2d/final-test-qdglq` (Version 2), licensed under CC BY 4.0.
+- **Component and Pin Annotation Dataset:** `ui24ec09-anshuman-maurya/component-pin-annotation-sample` (Version 1).
+
+The project uses separately trained models for board detection, electronic component identification, and pin-terminal localization.
+
+Dataset attribution and licensing terms should be respected when using or redistributing the datasets.
+
 If you find this project interesting, feel free to explore the repository and follow its development.
