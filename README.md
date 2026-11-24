@@ -170,4 +170,10 @@ The project is being developed with **Raspberry Pi 4 Model B** as its target dep
 
 The PCB detection, component detection, and multi-model integration stages are being developed as part of the project. Further improvements and deployment testing are planned.
 
+## Project Report
+
+The detailed project report covers the system architecture, dataset preparation, model development, implementation, Raspberry Pi deployment, and experimental results.
+
+📄 **[View Project Report (PDF)]([results/L298N_PCB_Detection_and_Localization_Report.pdf](https://github.com/Anshuman-718/PCB-Detection-and-Localization/blob/main/results/L298N_PCB_Detection_and_Localization_Report.pdf))**
+
 If you find this project interesting, feel free to explore the repository and follow its development.
