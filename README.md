@@ -116,7 +116,7 @@ venv\Scripts\activate
 
 **Linux / Raspberry Pi**
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 ### 3. Install Dependencies
