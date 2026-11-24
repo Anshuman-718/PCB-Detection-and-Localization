@@ -111,7 +111,7 @@ Activate it:
 
 **Windows**
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 **Linux / Raspberry Pi**
@@ -182,5 +182,23 @@ The detailed project report covers the system architecture, dataset preparation,
 The project uses separately trained models for board detection, electronic component identification, and pin-terminal localization.
 
 Dataset attribution and licensing terms should be respected when using or redistributing the datasets.
+
+## Limitations
+
+- Detection performance depends on image quality, lighting conditions, and PCB orientation.
+- The models are specifically developed for the L298N motor driver board and are not intended for general-purpose PCB inspection.
+- Detection accuracy may vary with different board layouts, component variations, and image resolutions.
+- Raspberry Pi 4 Model B deployment requires consideration of available processing power and memory.
+
+## Future Improvements
+
+- Improve detection accuracy using a larger and more diverse dataset.
+- Enhance pin and terminal localization for more precise identification.
+- Optimize ONNX models for faster inference on Raspberry Pi.
+- Develop a graphical user interface for displaying detection results.
+- Add automated PCB inspection and fault identification capabilities.
+- Explore real-time PCB inspection using a camera module.
+
+
 
 If you find this project interesting, feel free to explore the repository and follow its development.
