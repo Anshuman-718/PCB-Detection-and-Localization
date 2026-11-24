@@ -69,27 +69,26 @@ The third model focuses on identifying and localizing relevant pin and terminal 
 ```text
 PCB-Detection-and-Localization/
 │
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── models/
-│   ├── board_detection.pt
-│   ├── component_detection.pt
-│   └── pin_terminal_detection.pt
-│
 ├── integration/
 │   └── main.py
 │
-├── utils/
-│   └── ...
+├── models/
+│   └── raspberry_pi/
 │
-├── sample_images/
-│   └── ...
+├── raspberry_pi/
+│   ├── README.md
+│   └── [Raspberry Pi detection scripts]
 │
-└── results/
-    └── ...
+├── results/
+│   ├── README.md
+│   └── L298N_PCB_Detection_and_Localization_Report.pdf
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
+
+The `models` directory contains the trained model files, while `integration` contains the application that combines the detection modules. The `raspberry_pi` directory contains deployment-related scripts and instructions. The `results` directory contains the final project report.
 
 *Note: The structure above represents the planned organization. Actual filenames and folders may differ.*
 
