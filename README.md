@@ -1,4 +1,4 @@
-**AI-Based PCB Detection and Component Localization using YOLOv8**
+# AI-Based PCB Detection and Component Localization using YOLOv8
 
 An automated PCB inspection system using **YOLOv8, Python, and OpenCV** to detect an L298N motor driver board, identify its electronic components, and localize pins and terminal connection regions from captured images.
 
@@ -8,7 +8,7 @@ This project focuses on developing a computer vision-based system for automated 
 
 The system takes PCB images captured using a mobile phone camera as input and processes them through multiple trained deep learning models. These models work together to identify the target PCB, detect individual electronic components, and localize relevant pins and terminals.
 
-The project integrates three trained detection models into a single Python application.
+Three independently trained detection models are integrated into a single Python application to perform the complete inspection workflow.
 
 ## Key Features
 
@@ -17,16 +17,17 @@ The project integrates three trained detection models into a single Python appli
 - **Pin and Terminal Localization:** Identifies and localizes relevant pin and terminal connection regions.
 - **Multi-Model Integration:** Combines three trained models into a unified detection pipeline.
 - **Image-Based Inspection:** Supports processing photographs captured using a mobile phone camera.
-- **Embedded Deployment Target:** Developed with Raspberry Pi 4 Model B as the intended deployment platform.
+- **Embedded Deployment:** Uses Raspberry Pi 4 Model B as the target deployment platform.
 
 ## System Workflow
 
 1. Capture an image of the L298N PCB using a mobile phone camera.
-2. Transfer the captured image to the computer running the application.
-3. Process the input image using the trained PCB detection model.
+2. Transfer the captured image to the computer or Raspberry Pi.
+3. Process the input image using the PCB detection model.
 4. Identify individual electronic components using the component detection model.
 5. Perform pin and terminal localization using the third model.
-6. Integrate and display the detection results through the Python application.
+6. Integrate the outputs from all three detection models.
+7. Display and save the processed detection results.
 
 ## Detection Modules
 
@@ -53,6 +54,10 @@ The second model identifies individual components on the L298N PCB, including:
 
 The third model focuses on identifying and localizing relevant pin and terminal connection regions on the PCB.
 
+### 4. Integrated Application
+
+The three independently trained models are combined into a single Python application. This integration enables the complete PCB inspection workflow through one application.
+
 ## Technology Stack
 
 | Technology | Application |
@@ -60,8 +65,10 @@ The third model focuses on identifying and localizing relevant pin and terminal 
 | Python | Main programming language |
 | YOLOv8 | Object detection |
 | Ultralytics | Model training and inference |
-| OpenCV | Image processing |
+| OpenCV | Image processing and computer vision |
 | NumPy | Numerical operations |
+| ONNX | Exported model format for deployment |
+| Roboflow | Dataset preparation and annotation |
 | Raspberry Pi 4 Model B | Target deployment platform |
 
 ## Project Structure
@@ -74,10 +81,11 @@ PCB-Detection-and-Localization/
 │
 ├── models/
 │   └── raspberry_pi/
+│       └── Exported ONNX models
 │
 ├── raspberry_pi/
 │   ├── README.md
-│   └── [Raspberry Pi detection scripts]
+│   └── Raspberry Pi detection scripts
 │
 ├── results/
 │   ├── README.md
@@ -88,9 +96,7 @@ PCB-Detection-and-Localization/
 └── .gitignore
 ```
 
-The `models` directory contains the trained model files, while `integration` contains the application that combines the detection modules. The `raspberry_pi` directory contains deployment-related scripts and instructions. The `results` directory contains the final project report.
-
-*Note: The structure above represents the planned organization. Actual filenames and folders may differ.*
+The `integration` directory contains the application that combines the three detection models. The `models` directory stores the exported models for Raspberry Pi deployment. The `raspberry_pi` directory contains deployment scripts and instructions, while `results` contains the final project report.
 
 ## Installation and Setup
 
@@ -104,17 +110,17 @@ cd PCB-Detection-and-Localization
 ### 2. Create a Virtual Environment
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
-Activate it:
+**Windows:**
 
-**Windows**
 ```bash
 .venv\Scripts\activate
 ```
 
-**Linux / Raspberry Pi**
+**Linux / Raspberry Pi:**
+
 ```bash
 source .venv/bin/activate
 ```
@@ -127,45 +133,45 @@ pip install -r requirements.txt
 
 ### 4. Prepare the Model Files
 
-Place the required trained model files in the appropriate model directory. Check the model paths specified in the Python scripts before running the application.
+Place the required trained model files in their respective model directories.
 
-### 5. Run the Application
+Ensure that the model filenames and paths match those specified in the Python scripts.
 
-For the integrated application:
+### 5. Run the Integrated Application
 
 ```bash
 python integration/main.py
 ```
 
-**Note:** Model files and input images must be available at the paths configured in the scripts. Raspberry Pi deployment may require separate dependency installation and model-path configuration.
+**Note:** The application requires the trained model files and input images at the paths configured in the source code. Dependency versions and model paths may need adjustment depending on the execution platform.
+
+## Raspberry Pi Deployment
+
+The project uses **Raspberry Pi 4 Model B** as its target embedded deployment platform.
+
+The Raspberry Pi deployment uses exported ONNX models and OpenCV for image processing and inference.
+
+The deployment workflow includes:
+
+1. Transferring captured PCB images to the Raspberry Pi.
+2. Loading the exported ONNX models.
+3. Processing images using the corresponding Python scripts.
+4. Generating and saving detection outputs.
+
+For deployment-related scripts and instructions, refer to:
+
+[**Raspberry Pi Deployment Guide**](./raspberry_pi/README.md)
 
 ## Sample Results
 
-This section will contain actual project outputs demonstrating:
+The project report contains the details of the implementation, model development, system workflow, and experimental results.
 
-- Original mobile-captured PCB images.
-- L298N board detection results.
-- Individual component detection results.
-- Pin and terminal localization results.
-- Integrated system output.
+The main detection outputs demonstrate:
 
-## Target Deployment
-
-The project is being developed with **Raspberry Pi 4 Model B** as its target deployment platform, with the objective of enabling image-based PCB inspection on an embedded computing system.
-
-## Future Scope
-
-- Improve detection performance under different lighting conditions and camera angles.
-- Enhance pin and terminal localization accuracy.
-- Optimize inference for Raspberry Pi deployment.
-- Develop a standalone PCB inspection interface.
-- Extend the system to support additional PCB types.
-
-## Project Status
-
-**Ongoing Development**
-
-The PCB detection, component detection, and multi-model integration stages are being developed as part of the project. Further improvements and deployment testing are planned.
+- L298N motor driver board detection.
+- Electronic component identification.
+- Pin and terminal localization.
+- Integrated multi-model detection.
 
 ## Project Report
 
@@ -173,32 +179,52 @@ The detailed project report covers the system architecture, dataset preparation,
 
 [📄 View or Download Project Report (PDF)](./results/L298N_PCB_Detection_and_Localization_Report.pdf)
 
+## Limitations
+
+- Detection performance depends on image quality, lighting conditions, and PCB orientation.
+- The models are specifically developed for the L298N motor driver board and are not intended for general-purpose PCB inspection.
+- Detection accuracy may vary with different board layouts, component variations, and image resolutions.
+- Raspberry Pi deployment requires consideration of available processing power and memory.
+
+## Future Improvements
+
+- Improve detection performance using a larger and more diverse dataset.
+- Enhance pin and terminal localization accuracy.
+- Optimize ONNX models for faster inference on Raspberry Pi.
+- Develop a graphical user interface for displaying detection results.
+- Add automated PCB inspection and fault identification capabilities.
+- Explore real-time PCB inspection using a camera module.
+
 ## Acknowledgements and Dataset Credits
 
 - **Roboflow:** Used for dataset preparation, image annotation, and model training workflows.
 - **L298N Board Detection Dataset:** `visiontest-ryq2d/final-test-qdglq` (Version 2), licensed under CC BY 4.0.
 - **Component and Pin Annotation Dataset:** `ui24ec09-anshuman-maurya/component-pin-annotation-sample` (Version 1).
 
-The project uses separately trained models for board detection, electronic component identification, and pin-terminal localization.
-
 Dataset attribution and licensing terms should be respected when using or redistributing the datasets.
 
-## Limitations
+## Project Status
 
-- Detection performance depends on image quality, lighting conditions, and PCB orientation.
-- The models are specifically developed for the L298N motor driver board and are not intended for general-purpose PCB inspection.
-- Detection accuracy may vary with different board layouts, component variations, and image resolutions.
-- Raspberry Pi 4 Model B deployment requires consideration of available processing power and memory.
+The project includes three independently trained detection models:
 
-## Future Improvements
+1. L298N board detection.
+2. Electronic component detection.
+3. Pin and terminal localization.
 
-- Improve detection accuracy using a larger and more diverse dataset.
-- Enhance pin and terminal localization for more precise identification.
-- Optimize ONNX models for faster inference on Raspberry Pi.
-- Develop a graphical user interface for displaying detection results.
-- Add automated PCB inspection and fault identification capabilities.
-- Explore real-time PCB inspection using a camera module.
+All three models have been integrated into a single Python application. Raspberry Pi 4 Model B is the target deployment platform, with separate deployment scripts and exported ONNX models organized in the repository.
 
+Further improvements in detection accuracy, inference speed, and embedded deployment are possible.
 
+## Author
+
+**Anshuman Maurya**
+
+B.Tech – Electronics and Communication Engineering  
+Indian Institute of Information Technology, Surat
+
+- **GitHub:** [Anshuman-718](https://github.com/Anshuman-718)
+- **LinkedIn:** [Anshuman Maurya](https://www.linkedin.com/in/anshuman-maurya-b37000324/)
+
+---
 
 If you find this project interesting, feel free to explore the repository and follow its development.
