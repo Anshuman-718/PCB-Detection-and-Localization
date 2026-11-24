@@ -174,6 +174,6 @@ The PCB detection, component detection, and multi-model integration stages are b
 
 The detailed project report covers the system architecture, dataset preparation, model development, implementation, Raspberry Pi deployment, and experimental results.
 
-[📄 View or Download Project Report (PDF)](./results/L298N_PCB_Detection_and_Localization_Report.pdf))**
+[📄 View or Download Project Report (PDF)](./results/L298N_PCB_Detection_and_Localization_Report.pdf)
 
 If you find this project interesting, feel free to explore the repository and follow its development.
